@@ -1,9 +1,6 @@
-= Spring WebFlux Workshop
+= SpringOne Reactive Web Demo
 
-This repository hosts a complete workshop on Spring Boot + Spring WebFlux.
-You can follow the script
-https://bclozel.github.io/webflux-workshop/[follow the script]
-(the source document is in the "docs" folder) to create your first
-WebFlux applications!
-Each step of this workshop has its companion commit in the git history with a detailed commit message.
+This is a fork of Brian Clozel's excellent Spring Webflux Workshop, found here: https://github.com/bclozel/webflux-workshop
+A code-level walkthrough of this project can be found here: https://bclozel.github.io/webflux-workshop/
+
 

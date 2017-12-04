@@ -29,11 +29,11 @@ public class QuoteGenerator {
 	public QuoteGenerator() {
 		this.prices.add(new Quote("CTXS", 82.26));
 		this.prices.add(new Quote("DELL", 63.74));
-		this.prices.add(new Quote("GOOG", 847.24));
+		this.prices.add(new Quote("GOOG", 95.24));
 		this.prices.add(new Quote("MSFT", 65.11));
 		this.prices.add(new Quote("ORCL", 45.71));
-		this.prices.add(new Quote("RHT", 84.29));
-		this.prices.add(new Quote("VMW", 92.21));
+		this.prices.add(new Quote("IBM", 84.29));
+		this.prices.add(new Quote("VMW", 87.21));
 	}
 
 

@@ -37,7 +37,7 @@
     // Setting up the chart
     var chart = new Highcharts.chart('chart', {
         title: {
-            text: 'My Stock Portfolio'
+            text: 'SpringOne Stock Portfolio'
         },
         yAxis: {
             title: {
@@ -50,10 +50,10 @@
             verticalAlign: 'middle'
         },
         xAxis: {
-            type: 'datetime',
+            type: 'datetime'
         },
         series: [{
-            name: 'CTXS',
+            name: 'GOOG',
             data: []
         }, {
             name: 'MSFT',
@@ -62,7 +62,7 @@
             name: 'ORCL',
             data: []
         }, {
-            name: 'RHT',
+            name: 'IBM',
             data: []
         }, {
             name: 'VMW',
@@ -81,7 +81,7 @@
             })
             .forEach(function (serie) {
                 var shift = serie.data.length > 40;
-                serie.addPoint([quote.instant * 1000, quote.price], true, shift);
+                serie.addPoint([quote.instant, quote.price], true, shift);
             });
     };
 
@@ -92,5 +92,8 @@
         appendStockData(JSON.parse(e.data));
     };
 </script>
+
+<br><br>
+<p style="text-align:center;"><img src="https://d1ophd2rlqbanb.cloudfront.net/logo-s1p-multicolor.svg" width="600"/></p>
 </body>
 </html>

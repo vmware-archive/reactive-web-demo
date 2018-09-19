@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M7</version>
+		<version>2.0.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -62,10 +62,10 @@
 		</dependency>
 		<!-- end::webjars[] -->
 		<!-- tag::jacksonJSR310[] -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.fasterxml.jackson.datatype</groupId>-->
+			<!--<artifactId>jackson-datatype-jsr310</artifactId>-->
+		<!--</dependency>-->
 		<!-- end::jacksonJSR310[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,8 @@
+---
+applications:
+- name: ((app.name))
+  memory: ((app.memory))
+  routes:
+  - route: ((app.route))
+  path: ((app.artifact))
+  buildpack: java_buildpack

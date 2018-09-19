@@ -1,5 +1,6 @@
 package io.spring.workshop.tradingservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import reactor.core.publisher.Flux;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ import static org.springframework.http.MediaType.TEXT_EVENT_STREAM_VALUE;
 @Controller
 public class QuotesController {
 
+    @Value("${quotes.endpoint}")
+    private String quotesEndpoint;
+
 	@GetMapping("/quotes")
 	public String quotes() {
 		return "quotes";
@@ -21,7 +25,7 @@ public class QuotesController {
 	@GetMapping(path = "/quotes/feed", produces = TEXT_EVENT_STREAM_VALUE)
 	@ResponseBody
 	public Flux<Quote> quotesStream() {
-		return WebClient.create("http://localhost:8081")
+		return WebClient.create(quotesEndpoint())
 				.get()
 				.uri("/quotes")
 				.accept(APPLICATION_STREAM_JSON)
@@ -30,4 +34,8 @@ public class QuotesController {
 				.share()
 				.log("io.spring.workshop.tradingservice");
 	}
+
+	private String quotesEndpoint() {
+	    return quotesEndpoint;
+    }
 }

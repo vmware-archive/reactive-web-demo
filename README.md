@@ -19,7 +19,7 @@ The **stock-quotes** service generates a Flux stream of stock quote data, and ex
 ```java
 	public Flux<Quote> fetchQuoteStream(Duration period) {
 
-    // We use here Flux.generate to create quotes,
+    // We use Flux.generate to create quotes,
     // iterating on each stock starting at index 0
 		return Flux.generate(() -> 0,
 				(BiFunction<Integer, SynchronousSink<Quote>, Integer>) (index, sink) -> {

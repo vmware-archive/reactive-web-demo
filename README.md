@@ -42,8 +42,8 @@ The **stock-quotes** service generates a Flux stream of stock quote data, and ex
 The **trader-service** web app consumes data from the stock-quotes service and allows the Javascript to consume it as a Flux stream at the `/feed` endpoint. The key code is ``QuotesController's`` ``quotesStream()`` method.
 
 ```java
-	// program arg: --quotes.endpoint=https://localhost:8081
-	// ENV var: QUOTES_ENDPOINT https://localhost:8081
+    // program arg: --quotes.endpoint=https://localhost:8081
+    // ENV var: QUOTES_ENDPOINT https://localhost:8081
     @Value("${quotes.endpoint}")
     private String quotesEndpoint;
 

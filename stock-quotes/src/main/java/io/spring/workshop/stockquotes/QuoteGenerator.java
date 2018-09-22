@@ -13,6 +13,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.SynchronousSink;
 
 import org.springframework.stereotype.Component;
+import reactor.util.function.Tuple2;
 
 @Component
 public class QuoteGenerator {
@@ -38,9 +39,8 @@ public class QuoteGenerator {
 
 
 	public Flux<Quote> fetchQuoteStream(Duration period) {
-
 		// We use here Flux.generate to create quotes,
-    // iterating on each stock starting at index 0
+        // iterating on each stock starting at index 0
 		return Flux.generate(() -> 0,
 				(BiFunction<Integer, SynchronousSink<Quote>, Integer>) (index, sink) -> {
 					Quote updatedQuote = updateQuote(this.prices.get(index));
@@ -48,10 +48,10 @@ public class QuoteGenerator {
 					return ++index % this.prices.size();
 				})
 				// We want to emit them with a specific period;
-        // to do so, we zip that Flux with a Flux.interval
-				.zipWith(Flux.interval(period)).map(t -> t.getT1())
+                // to do so, we zip that Flux with a Flux.interval
+				.zipWith(Flux.interval(period)).map(Tuple2::getT1)
 				// Because values are generated in batches,
-        // we need to set their timestamp after their creation
+                // we need to set their timestamp after their creation
 				.map(quote -> {
 					quote.setInstant(Instant.now());
 					return quote;

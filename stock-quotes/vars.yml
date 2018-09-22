@@ -1,5 +1,5 @@
 app:
-  name: s1p-stock-quotes
+  name: stock-quotes
   artifact: target/stock-quotes-0.0.1-SNAPSHOT.jar
   memory: 1G
-  route: #TODO add your route
+  route: stock-quotes.cfapps.io

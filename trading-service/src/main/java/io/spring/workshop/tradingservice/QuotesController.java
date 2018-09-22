@@ -17,11 +17,6 @@ public class QuotesController {
     @Value("${quotes.endpoint}")
     private String quotesEndpoint;
 
-	@GetMapping("/quotes")
-	public String quotes() {
-		return "quotes";
-	}
-
 	@GetMapping(path = "/quotes/feed", produces = TEXT_EVENT_STREAM_VALUE)
 	@ResponseBody
 	public Flux<Quote> quotesStream() {
@@ -35,6 +30,11 @@ public class QuotesController {
 				.log("io.spring.workshop.tradingservice");
 	}
 
+	@GetMapping("/quotes")
+	public String quotes() {
+		return "quotes";
+	}
+	
 	private String quotesEndpoint() {
 	    return quotesEndpoint;
     }

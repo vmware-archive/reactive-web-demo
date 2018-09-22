@@ -1,5 +1,7 @@
 app:
-  name: s1p-trading-service
+  name: trading-service
   artifact: target/trading-service-0.0.1-SNAPSHOT.jar
   memory: 1G
-  route: #TODO add your route here
+  route: trading-service.cfapps.io
+env-key-1: QUOTES_ENDPOINT
+env-val-1: https://stock-quotes.cfapps.io

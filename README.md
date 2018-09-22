@@ -17,7 +17,6 @@ The demo consists of two Spring Boot applications, and the source code should be
 The **stock-quotes** service generates a Flux stream of stock quote data, and exposes it on the `/quotes` endpoint. You can see the stream in the app logs as it is being generated. The key source code begins on line 40 of **QuoteGenerator.java**
 
 ```java
-<<<<<<< HEAD
     public Flux<Quote> fetchQuoteStream(Duration period) {
         // We use here Flux.generate to create quotes,
         // iterating on each stock starting at index 0
@@ -38,29 +37,6 @@ The **stock-quotes** service generates a Flux stream of stock quote data, and ex
                 })
                 .log("io.spring.workshop.stockquotes");
     }
-=======
-	public Flux<Quote> fetchQuoteStream(Duration period) {
-
-    // We use Flux.generate to create quotes,
-    // iterating on each stock starting at index 0
-		return Flux.generate(() -> 0,
-				(BiFunction<Integer, SynchronousSink<Quote>, Integer>) (index, sink) -> {
-					Quote updatedQuote = updateQuote(this.prices.get(index));
-					sink.next(updatedQuote);
-					return ++index % this.prices.size();
-				})
-        // We want to emit them with a specific period;
-        // to do so, we zip that Flux with a Flux.interval
-				.zipWith(Flux.interval(period)).map(t -> t.getT1())
-        // Because values are generated in batches,
-        // we need to set their timestamp after their creation
-				.map(quote -> {
-					quote.setInstant(Instant.now());
-					return quote;
-				})
-				.log("io.spring.workshop.stockquotes");
-	}
->>>>>>> 3a165eaa484abb9fc00a4d77cdaec4a418655d3a
 ```
 
 The **trader-service** web app consumes data from the stock-quotes service and allows the Javascript to consume it as a Flux stream at the `/feed` endpoint. The key code is ``QuotesController's`` ``quotesStream()`` method.
